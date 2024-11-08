@@ -1,12 +1,24 @@
 [versions]
 android-build = "8.7.2"
+apollo = "4.1.0"
 kotlin = "2.0.21"
 
 [libraries]
+apollo-normalized-cache = { module = "com.apollographql.apollo:apollo-normalized-cache", version.ref = "apollo" }
+apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo:apollo-normalized-cache-sqlite", version.ref = "apollo" }
+apollo-runtime = { module = "com.apollographql.apollo:apollo-runtime", version.ref = "apollo" }
 plugin-android-build = { module = "com.android.tools.build:gradle", version.ref = "android-build" }
 plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-build" }
+apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 self-app = { id = "self-app", version = "unspecified" }
+
+[bundles]
+apollo = [
+  "apollo-normalized-cache",
+  "apollo-normalized-cache-sqlite",
+  "apollo-runtime",
+]
