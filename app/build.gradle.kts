@@ -1,5 +1,7 @@
 plugins {
   alias(libs.plugins.apollo)
+  alias(libs.plugins.hilt)
+  alias(libs.plugins.ksp)
   alias(libs.plugins.self.app)
 }
 
@@ -26,4 +28,8 @@ app {
 
 dependencies {
   implementation(libs.bundles.apollo)
+
+
+  implementation(libs.hilt)
+  ksp(libs.hilt.compiler)
 }

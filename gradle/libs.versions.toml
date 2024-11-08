@@ -1,19 +1,25 @@
 [versions]
 android-build = "8.7.2"
 apollo = "4.1.0"
+hilt = "2.52"
 kotlin = "2.0.21"
+ksp = "2.0.21-1.0.27"
 
 [libraries]
 apollo-normalized-cache = { module = "com.apollographql.apollo:apollo-normalized-cache", version.ref = "apollo" }
 apollo-normalized-cache-sqlite = { module = "com.apollographql.apollo:apollo-normalized-cache-sqlite", version.ref = "apollo" }
 apollo-runtime = { module = "com.apollographql.apollo:apollo-runtime", version.ref = "apollo" }
+hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 plugin-android-build = { module = "com.android.tools.build:gradle", version.ref = "android-build" }
 plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-build" }
 apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 self-app = { id = "self-app", version = "unspecified" }
 
 [bundles]
