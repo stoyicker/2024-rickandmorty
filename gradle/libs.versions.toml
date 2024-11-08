@@ -1,0 +1,12 @@
+[versions]
+android-build = "8.7.2"
+kotlin = "2.0.21"
+
+[libraries]
+plugin-android-build = { module = "com.android.tools.build:gradle", version.ref = "android-build" }
+plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "android-build" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+self-app = { id = "self-app", version = "unspecified" }
