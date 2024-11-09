@@ -20,6 +20,7 @@ android {
   kotlinOptions {
     freeCompilerArgs += "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
     freeCompilerArgs += "-opt-in=androidx.compose.foundation.layout.ExperimentalLayoutApi"
+    freeCompilerArgs += "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"
   }
 }
 

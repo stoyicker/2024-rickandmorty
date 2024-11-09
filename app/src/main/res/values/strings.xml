@@ -4,6 +4,8 @@
   <string name="content_description_day_theme">Force day theme</string>
   <string name="content_description_follow_system">Follow system</string>
   <string name="content_description_night_theme">Force night theme</string>
+  <string name="no_items_found">No items found</string>
+  <string name="placeholder_search">Tap to search</string>
   <string name="top_bar_title_detail">Detail</string>
   <string name="top_bar_title_list">List</string>
 </resources>

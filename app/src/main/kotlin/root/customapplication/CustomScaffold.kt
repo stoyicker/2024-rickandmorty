@@ -18,6 +18,7 @@ import stoyicker.interviewdemo.app.R
 internal fun CustomScaffold(
   dayNightThemeManager: DayNightThemeManager,
   title: String,
+  bottomBar: @Composable () -> Unit = {},
   content: @Composable (PaddingValues) -> Unit
 ) {
   val context = LocalContext.current
@@ -51,6 +52,7 @@ internal fun CustomScaffold(
         }
       )
     },
+    bottomBar = bottomBar,
     content = content
   )
 }

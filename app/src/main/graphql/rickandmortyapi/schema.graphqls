@@ -1,0 +1,31 @@
+schema {
+  query: Query
+}
+
+type Query {
+  characters(page: Int!, filter: Filter): Characters!
+}
+
+input Filter {
+  name: String
+}
+
+type Characters {
+  info: Info!
+  results: [Character!]!
+}
+
+type Info {
+  next: Int
+  prev: Int
+}
+
+type Character {
+  id: ID!
+  name: String
+  status: String
+  species: String
+  type: String
+  gender: String
+  image: String
+}

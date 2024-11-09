@@ -2,6 +2,7 @@ package root.customapplication
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
+import coil3.SingletonImageLoader
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
@@ -14,6 +15,8 @@ import kotlinx.coroutines.launch
 internal class CustomApplication : Application() {
   @Inject
   lateinit var dayNightThemeManager: DayNightThemeManager
+  @Inject
+  lateinit var singletonImageLoaderFactory: CustomSingletonImageLoaderFactory
 
   // Purposely keep this outside of the DI graph, we don't want other components to have access to
   // a CoroutineScope as big as one encompassing the entire lifetime of the app
@@ -28,6 +31,7 @@ internal class CustomApplication : Application() {
           dayNightThemeManager.refreshIsNightModeActive()
         }
     }
+    SingletonImageLoader.setSafe(singletonImageLoaderFactory)
   }
 
   override fun onTerminate() {

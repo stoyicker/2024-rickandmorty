@@ -1,9 +1,12 @@
 package root.customapplication.mainactivity
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -17,6 +20,9 @@ import root.customapplication.mainactivity.detail.NAVIGATION_KEY_DETAIL_SCREEN
 import root.customapplication.mainactivity.list.ListScreen
 import root.customapplication.mainactivity.list.NAVIGATION_KEY_LIST_SCREEN
 
+val Modifier.screenPadding: Modifier
+  get() = padding(start = 8.dp, top = 0.dp, end = 8.dp, bottom = 8.dp)
+
 @Composable
 internal fun CustomRootComposable(dayNightThemeManager: DayNightThemeManager) {
   val navController = rememberNavController()
@@ -25,7 +31,9 @@ internal fun CustomRootComposable(dayNightThemeManager: DayNightThemeManager) {
     CustomTheme {
       Surface {
         NavHost(navController, startDestination = NAVIGATION_KEY_LIST_SCREEN) {
-          composable(NAVIGATION_KEY_LIST_SCREEN) { ListScreen(dayNightThemeManager) }
+          composable(NAVIGATION_KEY_LIST_SCREEN) {
+            ListScreen(dayNightThemeManager, navController)
+          }
           composable(NAVIGATION_KEY_DETAIL_SCREEN) {
             val fallback = {
               navController.navigate(NAVIGATION_KEY_LIST_SCREEN) {
