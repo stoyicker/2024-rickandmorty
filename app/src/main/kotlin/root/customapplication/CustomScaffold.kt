@@ -19,6 +19,7 @@ internal fun CustomScaffold(
   dayNightThemeManager: DayNightThemeManager,
   title: String,
   bottomBar: @Composable () -> Unit = {},
+  navigationIcon: @Composable () -> Unit = {},
   content: @Composable (PaddingValues) -> Unit
 ) {
   val context = LocalContext.current
@@ -28,6 +29,7 @@ internal fun CustomScaffold(
     topBar = {
       TopAppBar(
         title = { Text(text = title) },
+        navigationIcon = navigationIcon,
         actions = {
           IconButton(onClick = {
             dayNightThemeManager.rotateNightModeBehavior()

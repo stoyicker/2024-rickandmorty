@@ -3,6 +3,7 @@ schema {
 }
 
 type Query {
+  character(id: ID!): Character!
   characters(page: Int!, filter: Filter): Characters!
 }
 

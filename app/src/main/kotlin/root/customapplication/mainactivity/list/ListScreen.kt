@@ -30,6 +30,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import root.customapplication.CustomScaffold
 import root.customapplication.DayNightThemeManager
+import root.customapplication.mainactivity.detail.NAVIGATION_KEY_DETAIL_SCREEN
 import root.customapplication.mainactivity.screenPadding
 import stoyicker.interviewdemo.app.R
 
@@ -122,7 +123,9 @@ internal fun ListScreen(
               key = characterEntries.itemKey { it.id }
             ) {
               with(characterEntries[it] ?: return@items) {
-                CharacterEntryCard(name, image, size)
+                CharacterEntryCard(name, image, size) {
+                  navController.navigate("$NAVIGATION_KEY_DETAIL_SCREEN/$id")
+                }
               }
             }
           }

@@ -8,9 +8,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import root.customapplication.CustomTheme
 import root.customapplication.DayNightThemeManager
 import root.customapplication.LocalIsNightMode
@@ -34,7 +36,14 @@ internal fun CustomRootComposable(dayNightThemeManager: DayNightThemeManager) {
           composable(NAVIGATION_KEY_LIST_SCREEN) {
             ListScreen(dayNightThemeManager, navController)
           }
-          composable(NAVIGATION_KEY_DETAIL_SCREEN) {
+          composable(
+            "$NAVIGATION_KEY_DETAIL_SCREEN/{$NAVIGATION_DETAIL_SCREEN_ARG_ID}",
+            arguments = listOf(
+              navArgument(NAVIGATION_DETAIL_SCREEN_ARG_ID) {
+                type = NavType.StringType
+              }
+            )
+          ) {
             val fallback = {
               navController.navigate(NAVIGATION_KEY_LIST_SCREEN) {
                 popUpTo(NAVIGATION_KEY_LIST_SCREEN) { inclusive = true }
@@ -43,7 +52,7 @@ internal fun CustomRootComposable(dayNightThemeManager: DayNightThemeManager) {
             val arguments = it.arguments ?: return@composable fallback()
             val id =
               arguments.getString(NAVIGATION_DETAIL_SCREEN_ARG_ID) ?: return@composable fallback()
-            DetailScreen(dayNightThemeManager, id)
+            DetailScreen(dayNightThemeManager, navController, id)
           }
         }
       }

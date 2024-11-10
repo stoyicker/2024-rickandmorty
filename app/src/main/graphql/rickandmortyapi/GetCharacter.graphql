@@ -1,0 +1,14 @@
+query GetCharacter($id: ID!) {
+  character(id: $id) {
+    ...CharacterDetail
+  }
+}
+
+fragment CharacterDetail on Character {
+  name
+  status
+  species
+  type
+  gender
+  image
+}

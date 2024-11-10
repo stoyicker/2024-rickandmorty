@@ -26,7 +26,7 @@ import java.util.Locale
 import stoyicker.interviewdemo.app.R
 
 @Composable
-internal fun CharacterEntryCard(name: String?, image: String?, size: Dp) {
+internal fun CharacterEntryCard(name: String?, image: String?, size: Dp, onClick: () -> Unit) {
   val shape = MaterialTheme.shapes.small
   ElevatedCard(
     modifier = Modifier
@@ -34,7 +34,7 @@ internal fun CharacterEntryCard(name: String?, image: String?, size: Dp) {
       .size(size)
       .padding(4.dp)
       .clip(shape)
-      .clickable {},
+      .clickable(onClick = onClick),
     shape = shape
   ) {
     Box(
