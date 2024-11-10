@@ -41,6 +41,8 @@ dependencies {
 
   implementation(libs.bundles.apollo)
 
+  implementation(libs.bundles.coil)
+
   implementation(libs.bundles.compose)
 
   implementation(libs.hilt)
