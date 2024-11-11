@@ -48,4 +48,12 @@ dependencies {
 
   implementation(libs.hilt)
   ksp(libs.hilt.compiler)
+
+  testImplementation(libs.junit4)
+
+  testImplementation(libs.kotlin.test)
+
+  testImplementation(libs.kotlinx.coroutines.test)
+
+  testImplementation(libs.mockito.kotlin)
 }
