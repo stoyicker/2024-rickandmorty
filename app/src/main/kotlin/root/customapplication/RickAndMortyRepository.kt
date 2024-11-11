@@ -5,10 +5,18 @@ import dagger.Reusable
 import javax.inject.Inject
 import rickandmortyapi.GetCharacterQuery
 import rickandmortyapi.GetCharactersQuery
+import root.customapplication.mainactivity.detail.GetsCharacter
+import root.customapplication.mainactivity.list.GetsCharacters
 
+/**
+ * We bind this using the interfaces so we can mock them in UI tests because mocks of final classes
+ * in instrumented tests are tricky due to them using Android bytecode instead of Java bytecode
+ */
 @Reusable
-internal class RickAndMortyRepository @Inject constructor(private val apolloClient: ApolloClient) {
-  suspend fun getCharacters(page: Int, filter: String) =
+internal class RickAndMortyRepository @Inject constructor(private val apolloClient: ApolloClient) :
+  GetsCharacters,
+  GetsCharacter {
+  override suspend fun getCharacters(page: Int, filter: String) =
     apolloClient.query(GetCharactersQuery(page, filter)).execute().dataOrThrow().characters
 
   /**
@@ -24,6 +32,6 @@ internal class RickAndMortyRepository @Inject constructor(private val apolloClie
    * data for an entry from the list is the same as the detail data, which is probably a safe
    * assumption in this case, but still an unnecessary risk.
    */
-  suspend fun getCharacter(id: String) =
+  override suspend fun getCharacter(id: String) =
     apolloClient.query(GetCharacterQuery(id)).execute().dataOrThrow().character
 }

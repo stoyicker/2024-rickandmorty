@@ -56,4 +56,12 @@ dependencies {
   testImplementation(libs.kotlinx.coroutines.test)
 
   testImplementation(libs.mockito.kotlin)
+
+  androidTestImplementation(libs.compose.uitest.junit4)
+
+  androidTestImplementation(libs.kotlinx.coroutines.test)
+
+  androidTestImplementation(libs.mockito.android)
+
+  debugImplementation(libs.compose.uitest.manifest)
 }

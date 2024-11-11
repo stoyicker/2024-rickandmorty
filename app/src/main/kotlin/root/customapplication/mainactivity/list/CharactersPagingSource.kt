@@ -6,16 +6,15 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import rickandmortyapi.fragment.CharactersEntry
-import root.customapplication.RickAndMortyRepository
 
 internal class CharactersPagingSource @AssistedInject constructor(
-  private val rickAndMortyRepository: RickAndMortyRepository,
+  private val getsCharacters: GetsCharacters,
   @Assisted private val filter: String
 ) : PagingSource<Int, CharactersEntry>() {
   override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharactersEntry> {
     val page = params.key ?: 1
     val data = try {
-      rickAndMortyRepository.getCharacters(page, filter)
+      getsCharacters.getCharacters(page, filter)
     } catch (throwable: Throwable) {
       return LoadResult.Error(throwable)
     }
